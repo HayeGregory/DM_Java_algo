@@ -1,7 +1,5 @@
 package GestionStock;
 
-import com.sun.jdi.Value;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +11,7 @@ public class Magasin {
 
     // constructor
     public Magasin(String nomCompletMagasin) {
-        this.nomCompletMagasin = nomCompletMagasin;
+        setNomCompletMagasin(nomCompletMagasin);
         this.stock = new HashMap<>();
     }
     // Getters - setters

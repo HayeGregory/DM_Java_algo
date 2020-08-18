@@ -8,7 +8,7 @@ public class ProduitBeaute extends Produit implements Echangeable{
     // constructor
     public ProduitBeaute(String nom, double prix, String categorieBeaute) {
         super(nom, prix);
-        this.categorieBeaute = categorieBeaute;
+        setCategorieBeaute(categorieBeaute);
     }
 
     // getters - setters

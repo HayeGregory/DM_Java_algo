@@ -8,7 +8,7 @@ public class ProduitInformatique extends Produit implements Remboursable, Echang
     // constructor
     public ProduitInformatique(String nom, double prix, String categorieDevice) {
         super(nom, prix);
-        this.categorieDevice = categorieDevice;
+        setCategorieDevice(categorieDevice);
     }
 
     // getters - setters

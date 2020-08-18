@@ -8,7 +8,7 @@ public class ProduitBricolage extends Produit implements Remboursable{
     // constructor
     public ProduitBricolage(String nom, double prix, String categorieBricolage) {
         super(nom, prix);
-        this.categorieBricolage = categorieBricolage;
+        setCategorieBricolage(categorieBricolage);
     }
 
     // Getters - setters

@@ -8,7 +8,7 @@ public class ProduitMusique extends Produit {
     // constructor
     public ProduitMusique(String nom, double prix, String nomChanteur) {
         super(nom, prix);
-        this.nomChanteur = nomChanteur;
+        setNomChanteur(nomChanteur);
     }
 
     // getters - setters

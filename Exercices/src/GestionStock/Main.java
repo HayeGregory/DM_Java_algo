@@ -16,7 +16,7 @@ public class Main {
 
         // clients
         ArrayList<Client> clients = new ArrayList<>() ;
-        double soldefictif = 0;
+        double soldefictif;
         for (int i = 0; i < 5; i++) {
             soldefictif = i * 1000;
             String nom = "Client " + (i+1);

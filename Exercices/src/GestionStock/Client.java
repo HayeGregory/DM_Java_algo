@@ -11,8 +11,8 @@ public class Client {
 
     // Constructor
     public Client(String nomCompletClient, double solde) {
-        this.nomCompletClient = nomCompletClient;
-        this.solde = solde;
+        setNomCompletClient(nomCompletClient);
+        setSolde(solde);
         this.produits = new ArrayList<>();
     }
 
