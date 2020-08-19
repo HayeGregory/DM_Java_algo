@@ -8,6 +8,7 @@ public class Magasin {
     // attributes
     private String nomCompletMagasin;
     private HashMap<Produit, Integer > stock;
+    // caisse
 
     // constructor
     public Magasin(String nomCompletMagasin) {

@@ -37,6 +37,7 @@ public abstract class Produit {
         }
     }
 
+    // methods
     public abstract void utiliser();
 
     @Override
