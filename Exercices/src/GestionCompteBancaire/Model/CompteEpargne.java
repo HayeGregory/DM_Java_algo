@@ -1,5 +1,8 @@
 package GestionCompteBancaire.Model;
 
+import GestionCompteBancaire.Exceptions.MontantNonValideException;
+import GestionCompteBancaire.Exceptions.SoldeInsuffisantException;
+
 import java.time.LocalDate;
 
 public class CompteEpargne extends Compte{
@@ -18,15 +21,20 @@ public class CompteEpargne extends Compte{
     }
 
     @Override
-    public void retrait(double qtt) {
+    public void retrait(double qtt) throws SoldeInsuffisantException{
 
         if( getSolde() - qtt >= 0 )
         {
-            super.retrait(qtt);
+            try {
+                super.retrait(qtt);
+            } catch (MontantNonValideException | SoldeInsuffisantException e) {
+                System.out.println("### " + e.getMessage());
+            }
             dateDernierRetrait = LocalDate.now();
         }
         else
-            System.out.println("fond insuffisant");
+            throw new SoldeInsuffisantException("Solde Client : " + getSolde());
+            //System.out.println("fond insuffisant");
     }
 
     @Override
@@ -45,5 +53,35 @@ public class CompteEpargne extends Compte{
 
     private void setDateDernierRetrait(LocalDate dateDernierRetrait) {
         this.dateDernierRetrait = dateDernierRetrait;
+    }
+
+    @Override
+    public void appliquerInteret(Compte cpte) {
+
+    }
+
+    @Override
+    public Personne recupererTitulaire(Compte cpte) {
+        return null;
+    }
+
+    @Override
+    public String recupererNumeroCompte(Compte cpte) {
+        return null;
+    }
+
+    @Override
+    public double recupererSolde() {
+        return 0;
+    }
+
+    @Override
+    public void effectuerDepot(double montant) {
+
+    }
+
+    @Override
+    public boolean effectuerRetrait(double montant) {
+        return false;
     }
 }

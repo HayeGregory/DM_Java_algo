@@ -1,7 +1,11 @@
 package GestionCompteBancaire.Model;
 
+import GestionCompteBancaire.Exceptions.MontantNonValideException;
+import GestionCompteBancaire.Exceptions.SoldeInsuffisantException;
 import GestionCompteBancaire.Interface.IBanquier;
 import GestionCompteBancaire.Interface.IClient;
+
+import java.awt.dnd.InvalidDnDOperationException;
 
 public abstract class Compte implements IBanquier, IClient {
     private String numero;
@@ -16,20 +20,22 @@ public abstract class Compte implements IBanquier, IClient {
         setSolde(getSolde() +  calculerInteret());
     }
 
-    public void retrait(double qtt)
-    {
+    public void retrait(double qtt) throws MontantNonValideException, SoldeInsuffisantException {
         if( qtt > 0 )
             setSolde( getSolde() - qtt );
         else
-            System.out.println("qtt invalide");
+            throw new MontantNonValideException("param qqt : " + qtt);
+            // System.out.println("qtt invalide");
     }
 
-    public void depot(double qtt)
+    public void depot(double qtt) throws MontantNonValideException
     {
         if( qtt > 0 )
             setSolde( getSolde() + qtt );
         else
-            System.out.println("qtt invalide");
+            throw new MontantNonValideException("param qqt : " + qtt);
+            // System.out.println("qtt invalide");
+
     }
 
 

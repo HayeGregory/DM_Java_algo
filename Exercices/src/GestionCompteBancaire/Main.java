@@ -1,5 +1,7 @@
 package GestionCompteBancaire;
 
+import GestionCompteBancaire.Exceptions.MontantNonValideException;
+import GestionCompteBancaire.Exceptions.SoldeInsuffisantException;
 import GestionCompteBancaire.Model.*;
 
 import java.time.LocalDate;
@@ -13,10 +15,42 @@ public class Main {
         System.out.println("compte epargen : ");
         Compte Epargne = new CompteEpargne("001", p1);
         Epargne.afficher();
+        // courant
+        System.out.println("compte courant : ");
+        CompteCourant courant = new CompteCourant("000", -5000, p1);
+        courant.afficher();
 
-        Epargne.depot(10000);
+        // test exceptions compte epargne
+        System.out.println("test d'un depot avec un montant negatif");
+        try {
+            Epargne.depot(-10000);
+        } catch ( MontantNonValideException e) {
+
+        }
+
+        System.out.println("test d'un retrait pas de liquidite");
+        try {
+            Epargne.retrait(10000);
+        } catch (MontantNonValideException | SoldeInsuffisantException e) {
+        }
+
+        // test exceptions compte courant
+        System.out.println("test d'un depot avec un montant negatif");
+        try {
+            courant.depot(-10000);
+        } catch (MontantNonValideException e) {
+
+        }
+
+        System.out.println("test d'un retrait pas de liquidite");
+        try {
+            courant.retrait(-10000);
+        } catch ( SoldeInsuffisantException e) {
+        }
+
+
         Epargne.afficher();
-
+/*
         Epargne.appliquerInteret();
         Epargne.afficher();
 
@@ -40,6 +74,6 @@ public class Main {
         courant.appliquerInteret();
         courant.afficher();
 
-
+*/
     }
 }

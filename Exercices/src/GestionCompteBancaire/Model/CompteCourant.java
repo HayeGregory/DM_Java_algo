@@ -1,5 +1,8 @@
 package GestionCompteBancaire.Model;
 
+import GestionCompteBancaire.Exceptions.MontantNonValideException;
+import GestionCompteBancaire.Exceptions.SoldeInsuffisantException;
+
 public class CompteCourant extends Compte {
     private double ligneCredit = 0;
 
@@ -17,11 +20,17 @@ public class CompteCourant extends Compte {
     }
 
     @Override
-    public void retrait(double qtt) {
+    public void retrait(double qtt) throws SoldeInsuffisantException {
         if( getSolde() - qtt >= -getLigneCredit() )
-            super.retrait(qtt);
+            try {
+                super.retrait(qtt);
+            } catch (MontantNonValideException e) {
+
+            }
+
         else
-            System.out.println("fond insuffisant");
+            throw new SoldeInsuffisantException("Solde Client : " + getSolde() + "ligne de credit :" + getLigneCredit());
+            // System.out.println("fond insuffisant");
     }
 
     @Override
@@ -39,6 +48,8 @@ public class CompteCourant extends Compte {
     public void setLigneCredit(double ligneCredit) {
         if( ligneCredit >= 0 )
             this.ligneCredit = ligneCredit;
+        else
+            System.out.println("declencher une except");
     }
 
     @Override
