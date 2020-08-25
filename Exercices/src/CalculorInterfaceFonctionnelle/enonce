@@ -1,0 +1,45 @@
+private static HashMap<String, BinaryOperator<Double>> operations = new HashMap<String, BinaryOperator<Double>>();
+private static Scanner sc = new Scanner(System.in);
+
+public static void start() {
+		initOperation();
+		String choice = null;
+
+		do {
+			choice = menu();
+			switch(choice)
+			{
+			case "1": calculate(); break;
+			case "2": System.exit(0); break;
+			default:System.out.println("Really? You just have to select 1 or 2!"); break;
+			}
+		}while(true);
+	}
+
+private static void initOperation(){
+	//todo
+}
+
+	private static String menu() {
+		System.out.println("********************");
+		System.out.println("*      M E N U     *");
+		System.out.println("********************");
+		System.out.println("* 1. Calculate     *");
+		System.out.println("* 2. Exit          *");
+		System.out.println("********************");
+		System.out.print("* Choice: ");
+
+		return sc.nextLine();
+	}
+
+	private static claculate(){
+		//todo
+	}
+
+	petit indice pour vous aider voici l'addition à mettre dans le iniOperation()
+    operations.put("+", (x,y)->x+y);
+
+
+
+    A mettre dans la méthode calculate() pour récupérer le symbole
+    BinaryOperator<Double> choice = operations.get(sc.nextLine());
