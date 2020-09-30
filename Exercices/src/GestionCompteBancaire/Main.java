@@ -2,6 +2,8 @@ package GestionCompteBancaire;
 
 import GestionCompteBancaire.Exceptions.MontantNonValideException;
 import GestionCompteBancaire.Exceptions.SoldeInsuffisantException;
+import GestionCompteBancaire.Interface.IBanquier;
+import GestionCompteBancaire.Interface.IClient;
 import GestionCompteBancaire.Model.*;
 
 import java.time.LocalDate;
@@ -19,6 +21,9 @@ public class Main {
         System.out.println("compte courant : ");
         CompteCourant courant = new CompteCourant("000", -5000, p1);
         courant.afficher();
+
+        // test interface
+        IClient monBanquier = new CompteCourant("xxxxxxxxxxx", 500, p1);
 
         // test exceptions compte epargne
         System.out.println("test d'un depot avec un montant negatif");

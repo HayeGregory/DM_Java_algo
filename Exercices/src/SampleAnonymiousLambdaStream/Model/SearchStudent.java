@@ -7,7 +7,7 @@ import java.util.List;
 
 public class SearchStudent {
     public static List<Student> Search(List<Student> students, ISearchable s) {
-        List<Student> response = new ArrayList<Student>();
+        List<Student> response = new ArrayList<>();
 
         for (Student student : students) {
             if (s.test(student)) {
